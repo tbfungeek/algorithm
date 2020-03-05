@@ -35,6 +35,32 @@ class SimpleLinkList(object):
         #int with None head node
         self.__head = None
 
+    def length(self):
+        if self.__head == None:
+            return 0
+        length = 0
+        current_node = self.__head
+        while current_node.next != None:
+            length += 1
+            current_node = current_node.next
+        return length
+
+    def isEmpty(self):
+        return self.__head == None
+
+    def head_node(self):
+        return self.__head
+
+    def tail_node(self):
+        if not self.__head:
+            return None
+
+        current_node = self.__head
+        while current_node.next != None:
+            current_node = current_node.next
+        return current_node
+    
+
     def insert_value_to_head(self,value):
         if not value:
             return
@@ -102,7 +128,6 @@ class SimpleLinkList(object):
                 return
             current_node = current_node.next
 
-
     def revert(self):
         if not self.__head:
             return
@@ -126,6 +151,15 @@ class SimpleLinkList(object):
         current = temp_node
         return pre , current
 
+    def concat(self,linkList):
+        if self.__head == None:
+            return linkList
+        if linkList.isEmpty():
+            return self
+        
+        tail_node = self.tail_node()
+        tail_node.next = linkList.head_node()
+        return self
 
     #when use for in xxx this function will call
     def __iter__(self):
@@ -144,6 +178,7 @@ class SimpleLinkList(object):
                 continue
             elements.append(str(node.data))
         return " ===> ".join(elements)
+
 
 if __name__ == "__main__":
 
@@ -172,3 +207,17 @@ if __name__ == "__main__":
 
     simpleLinkList.revert()
     print(simpleLinkList)
+
+    otherLinkList = SimpleLinkList()
+    otherLinkList.insert_value_to_head(4)
+    otherLinkList.insert_value_to_head(4)
+    otherLinkList.insert_value_to_head(4)
+    otherLinkList.insert_value_to_head(4)
+    otherLinkList.insert_value_to_head(4)
+
+    print(simpleLinkList.concat(otherLinkList))
+
+    simpleLinkList.concat(SimpleLinkList())
+    print(simpleLinkList)
+
+    print(SimpleLinkList().concat(simpleLinkList))
