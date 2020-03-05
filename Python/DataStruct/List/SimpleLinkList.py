@@ -16,6 +16,14 @@ class Node(object):
     def data(self,data):
         self.__data = data
 
+    @property
+    def next(self):
+        return self.__next
+    
+    @next.setter
+    def next(self, next):
+        self.__next = next
+
     def __str__(self):
         return str(self.__data)
     
@@ -25,7 +33,7 @@ class SimpleLinkList(object):
 
     def __init__(self):
         #int with None head node
-        self.___head = None
+        self.__head = None
 
     def insert_value_to_head(self,value):
         if not value:
@@ -43,7 +51,7 @@ class SimpleLinkList(object):
         node = Node(new_value)
         #if find in head node insert to head 
         if self.__head.data == value:
-            self.insert_value_to__head(new_value)
+            self.insert_value_to_head(new_value)
         else:
             #begin to find
             current_node = self.__head
