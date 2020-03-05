@@ -122,7 +122,70 @@ class CircleLinkList(object):
                 prev_node = current_node
                 current_node = current_node.next
 
+    def length(self):
+        if self.__head is None:
+            return 0
+        if self.__head == self.__head.next:
+            return 1
+        count = 1
+        current_node = self.__head.next
+        while current_node != self.__head:
+            count += 1
+            current_node = current_node.next
+        return count
+    
+    def isEmpty(self):
+        if self.__head is None:
+            return True
+        return False
 
+    def head_node(self):
+        return self.__head
+    
+    def tail_node(self):
+        if self.__head is None:
+            return None
+        if self.__head == self.__head.next:
+            return self.__head
+        current_node = self.__head
+        while current_node.next != self.__head:
+            current_node = current_node.next
+        return current_node
+
+    def middle_node(self):
+        if self.__head is None:
+            return None
+        if self.__head == self.__head.next:
+            return self.__head
+
+        slow_index = self.__head
+        fast_index = self.__head.next
+
+        while fast_index.next != self.__head:
+            fast_index = fast_index.next
+            slow_index = slow_index.next
+
+        return slow_index
+
+    def revert(self):
+        if self.__head is None:
+            return
+        if self.__head.next == self.__head:
+            return
+        old_head = self.__head
+        prev_node = self.__head
+        current_node = self.__head.next
+        while current_node != self.__head:
+            prev_node, current_node = self.revert_node(prev_node,current_node)
+        self.__head = prev_node
+        old_head.next = prev_node
+
+    def revert_node(self,pre,current):
+        temp = current.next
+        current.next = pre
+        pre = current
+        current = temp
+        return pre , current
 
     def __iter__(self):
 
@@ -169,4 +232,14 @@ if __name__ == "__main__":
     circleLinkList.delete_value(8188)
     print(circleLinkList)
     circleLinkList.delete_value(2)
+    circleLinkList.delete_value(888)
     print(circleLinkList)
+
+    print(circleLinkList.length())
+    print(circleLinkList.head_node())
+    print(circleLinkList.tail_node())
+    circleLinkList.revert()
+    print("----------")
+    print(circleLinkList)
+
+    print(circleLinkList.middle_node())
