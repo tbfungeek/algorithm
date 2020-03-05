@@ -2,38 +2,51 @@
 #!/usr/bin/env python3
 
 class Node(object):
+    """链表节点对象"""
+
     def __init__(self, data, next = None):
-        self.data = data
-        self.next = next
+        self.__data = data
+        self.__next = next
+
+    @property
+    def data(self):
+        return self.__data
+
+    @data.setter
+    def data(self,data):
+        self.__data = data
 
     def __str__(self):
-        return str(self.data)
+        return str(self.__data)
     
 
 class SimpleLinkList(object):
+    """单链表对象"""
 
     def __init__(self):
         #int with None head node
-        self._head = None
+        self.___head = None
 
     def insert_value_to_head(self,value):
+        if not value:
+            return
         node = Node(value)
         # point the node next to current head
-        node.next = self._head   
+        node.next = self.__head   
         # use node as head node 
-        self._head = node
+        self.__head = node
 
     def insert_value_before(self,value,new_value):
-        if value == None or self._head == None or new_value == None:
+        if value == None or self.__head == None or new_value == None:
             return
         #create a new node
         node = Node(new_value)
         #if find in head node insert to head 
-        if self._head.data == value:
-            self.insert_value_to_head(new_value)
+        if self.__head.data == value:
+            self.insert_value_to__head(new_value)
         else:
             #begin to find
-            current_node = self._head
+            current_node = self.__head
             #find while not reach to list tail
             while current_node.next != None:
                 #find the node before 
@@ -48,7 +61,7 @@ class SimpleLinkList(object):
         if not value or not new_value:
             return
         node = Node(new_value)
-        current_node = self._head
+        current_node = self.__head
         while current_node != None:
             if current_node.data == value:
                 node.next = current_node.next
@@ -58,23 +71,23 @@ class SimpleLinkList(object):
         
     
     def fine_value(self,value):
-        if not value or not self._head:
+        if not value or not self.__head:
             return None
-        current_node = self._head
+        current_node = self.__head
         while current_node != None:
             if current_node.data == value:
                 return current_node
             current_node = current_node.next
         
     def delete_value(self,value):
-        if not value or not self._head:
+        if not value or not self.__head:
             return
 
-        if self._head.data == value:
-            self._head = self._head.next
+        if self.__head.data == value:
+            self.__head = self.__head.next
             return
 
-        current_node = self._head
+        current_node = self.__head
         while current_node.next != None:
             if current_node.next.data == value:
                 current_node.next = current_node.next.next
@@ -84,9 +97,9 @@ class SimpleLinkList(object):
 
     #when use for in xxx this function will call
     def __iter__(self):
-        if self._head == None:
+        if self.__head == None:
             yield None
-        current_node = self._head
+        current_node = self.__head
         while current_node:
             yield current_node
             current_node = current_node.next
