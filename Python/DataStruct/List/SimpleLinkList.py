@@ -59,6 +59,22 @@ class SimpleLinkList(object):
         while current_node.next != None:
             current_node = current_node.next
         return current_node
+
+    def middle_node(self):
+
+        if not self.__head:
+            return None
+        
+        if self.__head.next is None:
+            return self.__head
+
+        iter_node = self.__head
+        middle_node = self.__head
+
+        while iter_node.next is not None and iter_node.next.next is not None:
+            iter_node = iter_node.next.next
+            middle_node = middle_node.next
+        return middle_node
     
 
     def insert_value_to_head(self,value):
@@ -160,7 +176,7 @@ class SimpleLinkList(object):
         tail_node = self.tail_node()
         tail_node.next = linkList.head_node()
         return self
-
+    
     #when use for in xxx this function will call
     def __iter__(self):
         if self.__head == None:
@@ -210,10 +226,11 @@ if __name__ == "__main__":
 
     otherLinkList = SimpleLinkList()
     otherLinkList.insert_value_to_head(4)
-    otherLinkList.insert_value_to_head(4)
-    otherLinkList.insert_value_to_head(4)
-    otherLinkList.insert_value_to_head(4)
-    otherLinkList.insert_value_to_head(4)
+    otherLinkList.insert_value_to_head(5)
+    otherLinkList.insert_value_to_head(6)
+    otherLinkList.insert_value_to_head(7)
+
+    print(otherLinkList.middle_node())
 
     print(simpleLinkList.concat(otherLinkList))
 
