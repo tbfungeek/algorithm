@@ -2,7 +2,7 @@
 #!/usr/bin/env python3
 
 class Node(object):
-    """链表节点对象"""
+    """Link list Node object"""
 
     def __init__(self, data, next = None):
         self.__data = data
@@ -29,7 +29,7 @@ class Node(object):
     
 
 class SimpleLinkList(object):
-    """单链表对象"""
+    """Link List Object"""
 
     def __init__(self):
         #int with None head node
@@ -103,6 +103,30 @@ class SimpleLinkList(object):
             current_node = current_node.next
 
 
+    def revert(self):
+        if not self.__head:
+            return
+
+        prev_node = self.__head
+        current_node = self.__head.next
+
+        while current_node != None:
+            prev_node, current_node = self.__revert_node(prev_node, current_node)
+
+        self.__head.next = None    
+        self.__head = prev_node
+
+    def __revert_node(self, pre, current):
+        #current.next will change so save in a temp value
+        temp_node = current.next
+        #revert current node
+        current.next = pre
+        #forward step
+        pre = current
+        current = temp_node
+        return pre , current
+
+
     #when use for in xxx this function will call
     def __iter__(self):
         if self.__head == None:
@@ -146,3 +170,5 @@ if __name__ == "__main__":
     simpleLinkList.delete_value(6)
     print(simpleLinkList)
 
+    simpleLinkList.revert()
+    print(simpleLinkList)
