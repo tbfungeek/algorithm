@@ -189,7 +189,7 @@ class SimpleLinkList(object):
     #when printf() is call this function will call
     def __str__(self):
         elements = []
-        for node in simpleLinkList:
+        for node in self:
             if node == None:
                 continue
             elements.append(str(node.data))
