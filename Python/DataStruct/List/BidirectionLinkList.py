@@ -33,6 +33,8 @@ class BNode(object):
         self.__next = next
 
     def __str__(self):
+        if self.__data is None:
+            return None
         return str(self.__data)
 
 class BidirectionLinkList(object):
@@ -128,6 +130,7 @@ class BidirectionLinkList(object):
                 current_node.next.prev = node
                 current_node.next = node
                 node.prev = current_node
+                self.__count += 1
                 return
             current_node = current_node.next
 
@@ -145,20 +148,75 @@ class BidirectionLinkList(object):
         node.prev = tail_node
 
     def delete_head_node(self):
-        pass
+        if self.isEmpty():
+            return
+        if self.__count == 1:
+            self.__head.prev = self.__head
+            self.__head.next = self.__head
+            self.__count = 0
+            return
+        self.__head.next.next.prev = self.__head
+        self.__head.next = self.__head.next.next
+        self.__count -= 1
+
+    def delete_value(self, value):
+        if self.isEmpty():
+            return
+        if self.__count == 1 and self.__head.data == value:
+            self.__head.prev = self.__head
+            self.__head.next = self.__head
+            self.__count = 0
+            return
+        current_node = self.__head.next
+        while current_node != self.__head:
+            if current_node.data == value:
+                current_node.next.prev = current_node.prev
+                current_node.prev.next = current_node.next
+                self.__count -= 1
+                return
+            current_node = current_node.next
+
 
     def delete_value_before(self,value):
-        pass
+        if self.isEmpty() or self.__count == 1:
+            return     
+        current_node = self.__head.next
+        while current_node != self.__head:
+            if current_node.data == value and current_node != self.__head.next:
+                current_node.prev.prev.next = current_node
+                current_node.prev = current_node.prev.prev
+                self.__count -= 1
+                return
+            current_node = current_node.next
 
     def delete_value_after(self,value):
-        pass
+        if self.isEmpty() or self.__count == 1:
+            return   
+        current_node = self.__head.next
+        while current_node != self.__head:
+            if current_node.data == value and current_node != self.__head.prev:
+                current_node.next.next.prev =  current_node
+                current_node.next = current_node.next.next
+                self.__count -= 1
+                return
+            current_node = current_node.next
 
     def delete_tail_value(self):
-        pass
+        if self.isEmpty():
+            return
+        if self.__count == 1:
+            self.__head.prev = self.__head
+            self.__head.next = self.__head
+            self.__count -= 1
+            return
+        tail_node = self.__head.prev
+        tail_node.prev.next = tail_node.next
+        tail_node.next.prev = tail_node.prev
+        self.__count -= 1
 
     def __str__(self):
         if self.isEmpty():
-            return None
+            return "None"
         value = []
         for item in self:
             value.append(str(item.data))
@@ -196,5 +254,29 @@ if __name__ == "__main__":
     print(b_link_list)
     b_link_list.insert_value_to_tail(888)
     print(b_link_list)
-
-
+    b_link_list.delete_head_node()
+    print(b_link_list)
+    b_link_list.delete_head_node()
+    print(b_link_list)
+    b_link_list.delete_tail_value()
+    print(b_link_list)
+    b_link_list.delete_tail_value()
+    print(b_link_list)
+    b_link_list.delete_value_before(5)
+    print(b_link_list)
+    b_link_list.delete_value_before(4)
+    print(b_link_list)
+    b_link_list.delete_value_before(1)
+    print(b_link_list)
+    b_link_list.delete_value_before(3)
+    print(b_link_list)
+    b_link_list.delete_value_after(3)
+    print(b_link_list)
+    b_link_list.delete_value_after(1)
+    print(b_link_list)
+    b_link_list.delete_value(3)
+    print(b_link_list)
+    b_link_list.delete_value(4)
+    print(b_link_list)
+    b_link_list.delete_value(1)
+    print(b_link_list)
