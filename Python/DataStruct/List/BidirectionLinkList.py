@@ -99,13 +99,50 @@ class BidirectionLinkList(object):
         self.__count += 1
 
     def insert_value_before(self,value,new_value):
-        pass
+        if value is None or new_value is None:
+            return
+        if self.isEmpty():
+            return
+        node = BNode(new_value)
+        current_node = self.__head.next
+        while current_node != self.__head:
+            if current_node.data == value:
+                node.next = current_node
+                current_node.prev.next = node
+                node.prev = current_node.prev
+                current_node.prev = node
+                self.__count += 1
+                return
+            current_node = current_node.next
 
     def insert_value_after(self,value,new_value):
-        pass
+        if value is None or new_value is None:
+            return
+        if self.isEmpty():
+            return
+        node = BNode(new_value)
+        current_node = self.__head.next
+        while current_node != self.__head:
+            if current_node.data == value:
+                node.next = current_node.next
+                current_node.next.prev = node
+                current_node.next = node
+                node.prev = current_node
+                return
+            current_node = current_node.next
 
     def insert_value_to_tail(self,value):
-        pass
+        if value is None:
+            return
+        if self.isEmpty():
+            self.insert_value_to_head(value)
+            return
+        node = BNode(value)
+        tail_node = self.__head.prev
+        node.next = tail_node.next
+        tail_node.next.prev = node
+        tail_node.next = node
+        node.prev = tail_node
 
     def delete_head_node(self):
         pass
@@ -146,5 +183,18 @@ if __name__ == "__main__":
     print(b_link_list.get(5))
     print(b_link_list.first())
     print(b_link_list.last())
-
     print(b_link_list)
+    b_link_list.insert_value_before(1,111)
+    print(b_link_list)
+    b_link_list.insert_value_before(5,111)
+    print(b_link_list)
+    b_link_list.insert_value_before(3,111)
+    print(b_link_list)
+    b_link_list.insert_value_after(111,222)
+    print(b_link_list)
+    b_link_list.insert_value_after(1,222)
+    print(b_link_list)
+    b_link_list.insert_value_to_tail(888)
+    print(b_link_list)
+
+
