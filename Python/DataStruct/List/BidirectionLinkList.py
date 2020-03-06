@@ -35,8 +35,6 @@ class BNode(object):
     def __str__(self):
         return str(self.__data)
 
-    
-
 class BidirectionLinkList(object):
 
     def __init__(self):
@@ -59,13 +57,36 @@ class BidirectionLinkList(object):
         return self.__count
 
     def get(self,index):
-        pass
+        if index < 0 or index >= self.__count:
+            return None
+        if self.isEmpty(): 
+            return None
+        if index <= self.__count / 2:
+            current_node = self.__head.next
+            current_index = 0
+            while current_node != self.__head:
+                if current_index == index:
+                    return current_node
+                current_index += 1
+                current_node = current_node.next
+        else:
+            current_node = self.__head.prev
+            current_index = 0 
+            while current_node != self.__head:
+                if current_index == self.__count - 1 - index:
+                    return current_node
+                current_index += 1
+                current_node = current_node.prev
 
     def first(self):
-        pass
+        if self.isEmpty():
+            return None
+        return self.__head.next
 
     def last(self):
-        pass
+        if self.isEmpty():
+            return None
+        return self.__head.prev
 
     def insert_value_to_head(self,value):
         if value is None:
@@ -122,5 +143,8 @@ if __name__ == "__main__":
     b_link_list.insert_value_to_head(3)
     b_link_list.insert_value_to_head(4)
     b_link_list.insert_value_to_head(5)
+    print(b_link_list.get(5))
+    print(b_link_list.first())
+    print(b_link_list.last())
 
     print(b_link_list)
