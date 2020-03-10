@@ -218,6 +218,15 @@
 
 ##### 3.3 图的遍历：
 
+* ****[无向图深度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
+* ****[无向图广度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
+* ****[有向图深度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
+* ****[有向图广度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
+
+* [图的遍历(搜索)](https://blog.ihypo.net/15013034834126.html)
+
+
+
 ##### 3.4 图的最小生成树：
 
 ##### 3.4 图的最短路径：
