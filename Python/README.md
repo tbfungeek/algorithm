@@ -225,12 +225,46 @@
 
 * [图的遍历(搜索)](https://blog.ihypo.net/15013034834126.html)
 
-
-
 ##### 3.4 图的最小生成树：
+
+* 定义： 
+
+- 是一颗树: 无回路，v个顶点一定有v-1条边，向生成树里面任意加一条边都会构成回路
+- 是生成树: 包含全部顶点，这v-1条边都在图里面，
+- 最小：所有边的权重和最小
+
+最小生成树核心是基于贪心算法思想，每一步都要最好，眼前最好，不一定全局最好。
+约束：
+- 只能从图里面选择边
+- 只能正好用掉v-1条
+- 不能有回路
+
+* ****Prim算法****
+* ****Kruskal算法****
+* [视频教程](https://www.youtube.com/watch?v=-E42M_yDWzI)
 
 ##### 3.4 图的最短路径：
 
+
+最小生成树和最短路径的区别：
+
+* ****最小生成树****能够保证整个拓扑图的所有路径之和最小，但不能保证任意两点之间是最短路径。
+* ****最短路径****是从一点出发，到达目的地的路径最小。
+* 遇到求所有路径之和最小的问题用最小生成树&并查集解决。
+* 遇到求两点间最短路径问题的用最短路，即从一个城市到另一个城市最短的路径问题。
+* 最小生成树构成后所有的点都被连通，而最短路只要到达目的地走的是最短的路径即可，与所有的点连不连通没有关系。
+
+* [视频教程](https://www.youtube.com/watch?v=ypE6a1Kk-6Q)
+* [最小生成树算法动画演示](https://www.bilibili.com/video/av47042691/)
+
+* ****Dijkstra****
+* ****floyd****
+* ****Bellman-Ford****
+
+* [图论最短距离(Shortest Path)算法动画演示-Dijkstra(迪杰斯特拉)和Floyd(弗洛伊德)](https://www.bilibili.com/video/av54668527)
+* [几个最短路径算法Floyd、Dijkstra、Bellman-Ford、SPFA的比较](https://blog.csdn.net/v_JULY_v/article/details/6181485)
+* [洛伊德算法完备算法详解](https://www.bilibili.com/video/av74605839?from=search&seid=13216477747890716269)
+* [弗洛伊德算法介绍](https://lrh1993.gitbooks.io/android_interview_guide/content/data-structure/graph/Floyd.html)
 
 ### 二. 算法
 
@@ -249,3 +283,7 @@
 #### 7. 动态规划
 
 #### 8. K最临近算法
+
+### 三. 学习材料推荐
+
+* [https://www.youtube.com/channel/UCD8yeTczadqdARzQUp29PJw](https://www.youtube.com/channel/UCD8yeTczadqdARzQUp29PJw)
