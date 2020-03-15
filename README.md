@@ -2,8 +2,18 @@
 
 #### 要坚信不论多远的远方都会到达。
 
-
 # 目录
+
+我将这个项目整体分成三大部分，第一部分是数据结构，包含，链表，队列，堆栈，树，图 5大数据结构，一个好的算法，必须要有适合的数据结构对数据进行组织，在这部分大家着重了解每种数据结构的形态，如何创建，如何实现遍历，删除，以及算法复杂度和优缺点。第二部分是具体的算法实现，重点包括两大部分十大排序，七大搜索算法。第三部分是五大算法策略，这一块主要是一些算法策略的指南，以及算法思想。
+
+所以简单说就是：
+
+* 五大数据结构
+* 十大排序
+* 七大搜索
+* 五大算法策略
+
+梳理清楚会对大家学习有所帮助。
 
 ### 零. 算法复杂度
 
@@ -638,21 +648,68 @@ f(key) = (f(key) + d) mod m (di = 1,2,3,4,5,6...m-1) 线性试探
 
 #### 3. 算法策略
 
+这部分将要给大家介绍算法策略，算法策略是对一类算法的思想进行归纳，是指导我们解决问题的思路，这里将介绍：
+递归，回溯，分治，贪婪，动态规划这五大算法策略。
+
 https://www.jianshu.com/p/a0941781926d
 https://algorithm-visualizer.org/simple-recursive/cellular-automata
 
 
 #### 3.1 递归
 
-https://www.zhihu.com/question/31412436
-https://www.youtube.com/watch?v=KEEKn7Me-ms
 
 #### 3.2 回溯
-https://www.cnblogs.com/steven_oyj/archive/2010/05/22/1741376.html
 
-https://www.cnblogs.com/steven_oyj/archive/2010/05/22/1741482.html
 
-#### 3.3 分治算法
+#### 3.3 分治算法 Divide And Conquer
+
+![](./image/algorithm/stratege/divider_conquer.png)
+
+****分治算法思想：****
+
+分治算法就是将一个复杂的大问题，不断划分为****相同或相似****的子问题，再把子问题分成更小的子问题，直到最后子问题可以用简单的方案直接求解为止。然后对各个子问题一一进行处理，最后将这些子问题的解决方案进行合并获得最终的解决方案。
+
+****哪些特征的问题可以使用分治算法：****
+
+* 主问题太过庞大，直接使用某种算法不好处理，但是该问题的规模缩小到一定程度后就可以以十分容易的方案解决掉。
+* 这些子问题必须是同类的子问题，能够以一种相同的算法来处理。只不过处理问题的规模变小而已，而不是将主问题进行划分步骤后将其分配到各个子问题，虽然问题规模也会变小，但是这不是分治算法。
+* 这些子问题的结果必须是能够合并的。
+* 这些子问题必须是相互独立的。
+
+****步骤：****
+
+****Step1 分解****：将原问题分解为若干个****规模较小***，****相互独立****，与原问题****形式相同****的子问题
+
+****Step2 解决****：若子问题规模较小而容易被解决则直接解，否则递归地拆解各个子问题
+
+****Step3 合并****：将各个子问题的解合并为原问题的解。
+
+![](./image/algorithm/stratege/divider_conquer_code.png)
+
+其中|P|表示问题P的规模
+n0为阈值，表示当问题P的规模不超过n0时，问题已容易直接解出，不必再继续分解。
+ADHOC(P)是该分治法中的基本子算法，用于直接解小规模的问题P。
+算法MERGE(y0,y1,...,yk-1)是该分治法中的合并子算法，用于将P的子问题P0 ,P1 ,...,Pk-1的相应的解y0,y1,...,yk-1合并为P的解。
+
+****分治法的复杂性分析：****
+
+假设问题规模为n的主问题可以采用分治算法分成k个规模为n/m的子问题去解：
+并作出如下假设：
+
+* 问题分解阈值n0 = 1
+* ADHOC解规模为n0的问题耗费时间为1个单位
+* 将原问题分解为k个子问题以及用merge将k个子问题的解合并为原问题的解需用f(n)个单位时间
+  
+那么分治算法的复杂度为：
+```
+T(n) = kT(n/m) + f(n)
+```
+****哪些地方用到了分治算法：****
+
+* 二分查找法
+* 归并排序
+* 快速排序算法
+* 汉诺塔
 
 #### 3.4 贪婪算法
 
@@ -673,6 +730,10 @@ http://zh.lucida.me/blog/on-learning-algorithms/
 * [Sound of sorting](http://panthema.net/2013/sound-of-sorting/)
 * [Sound of sorting Youtu](https://www.youtube.com/watch?v=kPRA0W1kECg&t=15s)
 * [Sorting Algorithms](https://www.toptal.com/developers/sorting-algorithms)
+https://www.youtube.com/watch?v=lahPKUJEhHU
+https://www.youtube.com/watch?v=pVfzNyNRqxk&list=PLljKjXpjNpge8KFkTgqWoR4qwKOW5iU_F
+
+https://www.pdai.tech/
 
 
 
