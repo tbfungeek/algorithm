@@ -190,7 +190,27 @@
 
 红黑树的调整包括两类：变色和旋转，这个会在第二轮的时候给予详细说明。
 
-****B树****与平衡二叉树的区别：
+[面试旧敌之红黑树（直白介绍深入理解）](https://juejin.im/entry/58371f13a22b9d006882902d)
+
+****B树****
+
+****B树定义****
+
+>* Every node has at most m children.
+>* Every non-leaf node (except root) has at least ⌈m/2⌉ child nodes.
+>* The root has at least two children if it is not a leaf node.
+>* A non-leaf node with k children contains k − 1 keys.
+>* All leaves appear in the same level and carry no information.
+
+* 根结点(非叶子结点的情况下)至少有两个结点
+* 每个结点最多有m个子结点
+* 每个非叶子结点至少有⌈m/2⌉个子结点
+* 有k个子结点的非叶子结点都包含k-1个key
+* 所有都叶子结点出现在同一层，并且没有携带信息
+
+![](http://hi.csdn.net/attachment/201106/7/8394323_130745821166Sc.jpg)
+
+****与平衡二叉树的区别****
 
 - 若根结点不是终端结点，则至少有2棵子树
 - 平衡二叉树节点最多有两个子结点，而B树每个节点可以有多个子结点，m阶B树表示该树每个节点最多有m个子结点
@@ -204,7 +224,6 @@
 - 从根节点开始，如果查找的数据比根节点小，就去左子树找，否则去右子树
 - 和子树的多个关键字进行比较，找到它所处的范围，然后去范围对应的子树中继续查找
 - 以此循环，直到找到或者到叶子节点还没找到为止
-
 
 ****B+树**** 它比 B 树的查询性能更高。
 
@@ -231,6 +250,7 @@
 * [重温数据结构：理解 B 树、B+ 树特点及使用场景](https://juejin.im/entry/5b0cb64e518825157476b4a9)
 * [B Trees and B+ Trees, How they are usefull in Databases](https://youtu.be/aZjYr87r1b8)
 
+* [面试官问你B树和B+树，就把这篇文章丢给他](https://segmentfault.com/a/1190000020416577)
 
 ###### 二叉树存储
 
