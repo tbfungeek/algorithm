@@ -44,6 +44,49 @@ class BSTree(object):
             else:
                 self.right.insert(value)
 
+    def delete(self,value):
+        current_node = self
+        parent = None
+        #find the node
+        while current_node and current_node.data != value:
+            parent = current_node
+            current_node = current_node.left if current_node.data > value else current_node.right
+        if current_node is None:
+            return
+        
+        #in case of the node has left child and right child
+        if current_node.left is not None and current_node.right is not None:
+            successor = current_node.right
+            successor_parent = current_node
+            
+            #find the item next to current node in inOrder
+            while successor.left is not None:
+                successor_parent = successor
+                successor = successor.left
+            
+            #replace current node with value next to current node in inOrder
+            current_node.data = successor.data
+            #it will be delete later
+        
+        #begin to process the case of only has one child
+            parent , current_node = successor_parent , successor
+
+        child = None
+        #in case of only has left child
+        if current_node.left is not None:
+            child = current_node.left
+        #in case of only has right child
+        elif current_node.right is not None:
+            child = current_node.right
+        
+        #delete item 
+        if parent is None:
+            self = child
+        if parent.left == current_node:
+            parent.left = child
+        else:
+            parent.right = child
+
     def contain(self,value):
         if self.data == value:
             return True
@@ -57,7 +100,6 @@ class BSTree(object):
                 return False
             else:
                 return self.right.contain(value)
-
 
     def inOrderTraverl(self):
         if self.left is not None:
@@ -80,23 +122,37 @@ class BSTree(object):
             yield  from self.right.postOrderTravel()
         yield self.data 
 
+
 if __name__ == "__main__":
 
-    binary_tree = BSTree(10)
-    binary_tree.insert(5)
-    binary_tree.insert(15)
+    binary_tree = BSTree(5)
+    binary_tree.insert(3)
+    binary_tree.insert(4)
+    binary_tree.insert(7)
     binary_tree.insert(8)
+    binary_tree.insert(1)
+    binary_tree.insert(2)
+    binary_tree.insert(6)
+    binary_tree.insert(9)
+    binary_tree.insert(10)
     print(binary_tree.contain(10))
+
+    #for data in binary_tree.inOrderTraverl():
+    #    print(data)
+
+    #print("="*50+">")
+
+    #for data in binary_tree.preOrderTravel():
+    #    print(data)
+    
+    #print("="*50+">")
+
+    #for data in binary_tree.postOrderTravel():
+    #    print(data)
+
+    binary_tree.delete(10)
 
     for data in binary_tree.inOrderTraverl():
         print(data)
 
     print("="*50+">")
-
-    for data in binary_tree.preOrderTravel():
-        print(data)
-    
-    print("="*50+">")
-
-    for data in binary_tree.postOrderTravel():
-        print(data)
