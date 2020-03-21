@@ -1,5 +1,5 @@
 class BSTree(object):
-
+    
     def __init__(self,data):
         self.__data  = data
         self.__left  = None
@@ -48,6 +48,14 @@ class BSTree(object):
                 self.right = BSTree(value)
             else:
                 self.right.insert(value)
+
+    def height(self):
+        return self.tree_height(self)
+
+    def tree_height(self,node):
+        if node is None:
+            return 0
+        return max(self.tree_height(node.left),self.tree_height(node.right)) + 1
 
     def delete(self,value):
         current_node = self
@@ -201,7 +209,9 @@ if __name__ == "__main__":
     binary_tree.insert(6)
     binary_tree.insert(9)
     binary_tree.insert(10)
-    print(binary_tree.contain(10))
+    #print(binary_tree.contain(10))
+
+    print(binary_tree.height())
 
     #for data in binary_tree.inOrderTraverl():
     #    print(data)
@@ -216,12 +226,14 @@ if __name__ == "__main__":
     #for data in binary_tree.postOrderTravel():
     #    print(data)
 
-    #binary_tree.delete(10)
+    binary_tree.delete(10)
+    
+    print(binary_tree.height())
 
     #for data in binary_tree.leaveOrderTravel():
     #    print(data)
 
-    for data in binary_tree.postOrderStack():
-        print(data)
+    #for data in binary_tree.postOrderStack():
+    #    print(data)
 
     print("="*50+">")

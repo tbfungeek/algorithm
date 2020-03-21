@@ -326,12 +326,18 @@
 ##### 要点：
 
 * 树的基本概念
+* BST树的比较次数取决于树的高度 MIN(logn,n)
 * 满二叉树，完全二叉树，大小堆，平衡二叉树，红黑树，B树，B+树
 * 大小堆的创建，插入结点，删除结点，用于排序
 * AVL，红黑树，B树，B+树 构建，插入删除，查找，翻转结点
 * 树的存储，遍历，线索化
 * 树，森林转二叉树
 * 哈夫曼树与哈夫曼编码
+
+##### 教程：
+
+* [Binary Search Tree](https://www.youtube.com/watch?v=JfSdGQdAzq8&list=PLDV1Zeh2NRsCYY48kOkeLQ-cg9-eqInzs)
+* [AVL Tree - Insertion and Rotations](https://www.youtube.com/watch?v=jDM6_TnYIqE)
 
 #### 3. 图
 
