@@ -33,6 +33,11 @@ class BSTree(object):
         return str(self.__data)
 
     def insert(self,value):
+
+        if self.data is None:
+            self.data = value
+            return
+
         if value <= self.data:
             if self.left is None:
                 self.left = BSTree(value)
@@ -120,8 +125,20 @@ class BSTree(object):
             yield from self.left.postOrderTravel()
         if self.right is not None:
             yield  from self.right.postOrderTravel()
-        yield self.data 
+        yield self.data
 
+    def leaveOrderTravel(self):
+        if self.data is None: 
+            return
+        queue = []
+        queue.append(self)
+        while queue:
+            node = queue.pop(0)
+            yield node
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
 
 if __name__ == "__main__":
 
@@ -150,9 +167,9 @@ if __name__ == "__main__":
     #for data in binary_tree.postOrderTravel():
     #    print(data)
 
-    binary_tree.delete(10)
+    #binary_tree.delete(10)
 
-    for data in binary_tree.inOrderTraverl():
+    for data in binary_tree.leaveOrderTravel():
         print(data)
 
     print("="*50+">")
