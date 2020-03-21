@@ -107,25 +107,74 @@ class BSTree(object):
                 return self.right.contain(value)
 
     def inOrderTraverl(self):
+        if self.data is None: 
+            return
         if self.left is not None:
             yield from self.left.inOrderTraverl()
         yield self.data
         if self.right is not None:
             yield from self.right.inOrderTraverl()
+    
+    def inOrderStack(self):
+        if self.data is None:
+            return
+        stack = []
+        node = self
+        while node or len(stack) > 0:
+            while node:
+                stack.append(node)
+                node = node.left
+            node = stack.pop()
+            yield node.data
+            node = node.right
 
     def preOrderTravel(self):
+        if self.data is None: 
+            return
         yield self.data
         if self.left is not None:
             yield from self.left.preOrderTravel()
         if self.right is not None:
             yield from self.right.preOrderTravel()
 
+    def preOrderStack(self):
+        if self.data is None:
+            return
+        stack = []
+        node = self
+        while node or len(stack) > 0:
+            while node:
+                stack.append(node)
+                yield node.data
+                node = node.left
+            node = stack.pop()
+            node = node.right
+
     def postOrderTravel(self):
+        if self.data is None: 
+            return
         if self.left is not None:
             yield from self.left.postOrderTravel()
         if self.right is not None:
             yield  from self.right.postOrderTravel()
         yield self.data
+
+    def postOrderStack(self):
+        if self.data is None:
+            return
+        stack1 = []
+        stack2 = []
+        stack1.append(self)
+        while len(stack1) > 0:
+            node = stack1.pop()
+            if node.left is not None:
+                stack1.append(node.left)
+            if node.right is not None:
+                stack1.append(node.right)
+            stack2.append(node)
+        
+        while len(stack2) > 0:
+            yield stack2.pop().data
 
     def leaveOrderTravel(self):
         if self.data is None: 
@@ -138,7 +187,7 @@ class BSTree(object):
             if node.left is not None:
                 queue.append(node.left)
             if node.right is not None:
-                queue.append(node.right)
+                queue.append(node.right)    
 
 if __name__ == "__main__":
 
@@ -169,7 +218,10 @@ if __name__ == "__main__":
 
     #binary_tree.delete(10)
 
-    for data in binary_tree.leaveOrderTravel():
+    #for data in binary_tree.leaveOrderTravel():
+    #    print(data)
+
+    for data in binary_tree.postOrderStack():
         print(data)
 
     print("="*50+">")
