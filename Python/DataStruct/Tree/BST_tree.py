@@ -199,36 +199,36 @@ class BSTree(object):
 
 if __name__ == "__main__":
 
-    binary_tree = BSTree(5)
-    binary_tree.insert(3)
-    binary_tree.insert(4)
-    binary_tree.insert(7)
-    binary_tree.insert(8)
-    binary_tree.insert(1)
-    binary_tree.insert(2)
-    binary_tree.insert(6)
-    binary_tree.insert(9)
-    binary_tree.insert(10)
+    binary_tree = BSTree(22)
+    binary_tree.insert(18)
+    binary_tree.insert(43)
+    #binary_tree.insert(7)
+    #binary_tree.insert(8)
+    #binary_tree.insert(1)
+    #binary_tree.insert(2)
+    #binary_tree.insert(6)
+    #binary_tree.insert(9)
+    #binary_tree.insert(10)
     #print(binary_tree.contain(10))
 
-    print(binary_tree.height())
+    #print(binary_tree.height())
 
     #for data in binary_tree.inOrderTraverl():
     #    print(data)
 
     #print("="*50+">")
 
-    #for data in binary_tree.preOrderTravel():
-    #    print(data)
+    for data in binary_tree.preOrderTravel():
+        print(data)
     
     #print("="*50+">")
 
     #for data in binary_tree.postOrderTravel():
     #    print(data)
 
-    binary_tree.delete(10)
+    #binary_tree.delete(10)
     
-    print(binary_tree.height())
+    #print(binary_tree.height())
 
     #for data in binary_tree.leaveOrderTravel():
     #    print(data)
