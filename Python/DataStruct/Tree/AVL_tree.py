@@ -51,7 +51,6 @@ class AVLNode(object):
         return "data = {} height = {} balance = {}".format(self.data,self.height,self.balance)
 
 class AVLTree(object):
-    
     def __init__(self):
         self.__root = None
     
@@ -77,25 +76,58 @@ class AVLTree(object):
             root.right = self.__insert(data,root.right)
         return root
 
+    def __delete(self,data,root):
+        if root is None:
+            return
+        current_node = root
+        parent = None
+        while current_node and current_node.data != data:
+            parent = current_node
+            if data < current_node.data:
+                current_node = current_node.left
+            elif data > current_node.data:
+                current_node = current_node.right
+        if current_node is None:
+            return
+
+        if current_node.left is not None and current_node.right is not None:
+            successor = current_node.right
+            successor_parent = current_node
+            while successor.left != None:
+                successor_parent = successor
+                successor = successor.left
+            current_node.data = successor.data
+            #delete successor
+            current_node , parent = successor , successor_parent
+
+        child_node = None
+        if current_node.left is not None:
+            child_node = current_node.left
+        elif current_node.right is not None:
+            child_node = current_node.right
+
+        if parent is None:
+            self.root = child_node
+        if parent.left == current_node:
+            parent.left = child_node
+        if parent.right == current_node:
+            parent.right = child_node
+
+        return root
+
     def rebalance(self):
 
         self.update_height_and_balance()
         if self.root.balance > 1:
             if self.root.left.balance > 0:
-                #print("ll {} as balance {}".format(data,root.balance))
                 self.root = self._ll_rotation(self.root)
             else:
-                #print("lr {} as balance {}".format(data,root.balance))
                 self.root = self._lr_rotation(self.root)
         elif self.root.balance < -1:
             if self.root.right.balance > 0:
-                #print("rl {} as balance {}".format(data,root.balance))
                 self.root = self._rl_rotation(self.root)
             else:
-                #print("rr {} as balance {}".format(data,root.balance))
                 self.root = self._rr_rotation(self.root)
-
-        
 
     def insert(self,data):
         self.__root = self.__insert(data,self.__root)
@@ -106,7 +138,8 @@ class AVLTree(object):
         self.update_nodes_balance()
 
     def delete(self,data):
-        pass
+        self.__root = self.__delete(data,self.__root);
+        self.rebalance()
 
     #        x                
     #       / \             
@@ -228,7 +261,11 @@ if __name__ == "__main__":
     avltree.insert(9)
     avltree.insert(21)
     avltree.insert(6)
-    
+
+    avltree.delete(6)
+    avltree.delete(21)
+    avltree.delete(9)
+
     for item in avltree.preOrderTravel():
         print(item)
 
