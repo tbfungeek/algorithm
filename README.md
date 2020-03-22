@@ -206,7 +206,7 @@
 2. 节点只有两种，红色和黑色。
 3. 根节点是黑色的，每个叶子节点都是黑色的空节点，叶子节点不存储数据。
 4. 每个红色节点的两个子节点都应该是黑色的
-5. 任何相邻的节点都不能同时为红色（也就是说，红色节点需要被黑色节点隔开）
+5. 从每个根到节点的路径上不会有两个连续的红色节点，但黑色节点是可以连续的。
 6. 每个节点，从该节点到达其可达的叶子节点都应该包含相同数量的黑色节点。
 
 ![](./image/readme/red_black_tree.png)
@@ -219,6 +219,19 @@
 
 [面试旧敌之红黑树（直白介绍深入理解）](https://juejin.im/entry/58371f13a22b9d006882902d)
 [红黑树比 AVL 树具体更高效在哪里？](https://www.zhihu.com/question/19856999/answer/258118494)
+
+红黑树的主要操作及算法复杂度：
+
+* 搜索 O(logn)
+* 插入 O(logn)
+* 删除 O(logn)
+* 旋转 O(1)
+
+空间复杂度
+
+* O(n)
+  
+
 
 ****B树****
 
@@ -923,6 +936,7 @@ KNN 最关键的部分在于两点：特征的抽取以及相似度的计算。
 
 ### 三. 学习材料推荐
 
+* [https://www.youtube.com/channel/UC6Aa5t0vHN8uj_BCbgrRZcQ](https://www.youtube.com/channel/UC6Aa5t0vHN8uj_BCbgrRZcQ)
 * [https://www.youtube.com/channel/UCD8yeTczadqdARzQUp29PJw](https://www.youtube.com/channel/UCD8yeTczadqdARzQUp29PJw)
 * [https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O](https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O)
 * [https://www.youtube.com/user/mikeysambol](https://www.youtube.com/user/mikeysambol)
@@ -940,7 +954,8 @@ http://zh.lucida.me/blog/on-learning-algorithms/
 * [https://www.jianshu.com/p/a0941781926d](https://www.jianshu.com/p/a0941781926d)
 * [https://algorithm-visualizer.org/simple-recursive/cellular-automata](https://algorithm-visualizer.org/simple-recursive/cellular-automata)
 * [http://www.cppblog.com/menjitianya/archive/2015/10/23/212084.html](http://www.cppblog.com/menjitianya/archive/2015/10/23/212084.html)
-
+* [https://algorithmtutor.com/#](https://algorithmtutor.com/#)
+* [https://www.cs.usfca.edu/~galles/visualization/RedBlack.html](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 
 
 
