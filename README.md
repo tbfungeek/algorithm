@@ -215,10 +215,14 @@
 
 ![](https://user-gold-cdn.xitu.io/2016/11/29/63e3f88d8c6103651a967d5ab9decc9c?imageslim)
 
-红黑树的调整包括两类：变色和旋转，这个会在第二轮的时候给予详细说明。
+红黑树的调整包括两类：变色和旋转，旋转又分为左旋和右旋，这个会在第二轮的时候给予详细说明。
 
 [面试旧敌之红黑树（直白介绍深入理解）](https://juejin.im/entry/58371f13a22b9d006882902d)
 [红黑树比 AVL 树具体更高效在哪里？](https://www.zhihu.com/question/19856999/answer/258118494)
+[面试还在被红-黑树虐？看完这篇动图文章轻松反虐面试官](https://cloud.tencent.com/developer/article/1368454)
+[那些年，面试被虐过的红黑树](https://my.oschina.net/wangzhenchao/blog/1785932)
+[图解“红黑树”原理，一看就明白！](https://mlog.club/article/27008)
+[我画了 20 张图，给女朋友讲清楚红黑树](https://www.cxyxiaowu.com/7374.html)
 
 红黑树的主要操作及算法复杂度：
 
