@@ -236,6 +236,13 @@
 [图解“红黑树”原理，一看就明白！](https://mlog.club/article/27008)
 [我画了 20 张图，给女朋友讲清楚红黑树](https://www.cxyxiaowu.com/7374.html)
 
+[红黑树（二叉树）概念与查询（一）](https://blog.csdn.net/lsr40/article/details/85230703)
+[红黑树插入数据（变色，左旋、右旋）（二）](https://blog.csdn.net/lsr40/article/details/85245027)
+[红黑树插入数据的情况与实现（三）](https://blog.csdn.net/lsr40/article/details/85266069)
+[红黑树删除数据（寻找继承人）（四）](https://blog.csdn.net/lsr40/article/details/85322371)
+[红黑树删除数据（最后一步，平衡红黑树）（五）](https://blog.csdn.net/lsr40/article/details/86711889)
+[结构之法算法之道blog之博主 关于红黑树的文章](https://blog.csdn.net/v_july_v/category_774945.html)
+
 红黑树的主要操作及算法复杂度：
 
 * 搜索 O(logn)
