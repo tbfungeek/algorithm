@@ -1,9 +1,7 @@
 import bisect
 import math
+import random
 
-"""
-叶子结点
-"""
 class Leaf:
 
     def __init__(self, previous_leaf, next_leaf, parent, branching_factor=16):
@@ -50,7 +48,7 @@ class Leaf:
 
         #从index之前的都放到当前结点
         self.keys = self.keys[:index]
-        self.children = self.keys[:index]
+        self.children = self.children[:index]
         
         #如果当前结点为根结点，则新生成一个node结点作为它的父结点
         if self.is_root():
@@ -66,29 +64,36 @@ class Leaf:
         return self.next
 
     def remove_item(self, key):
+        #找到待删除的key
         del_index = self.keys.index(key)
+        #从key 和 children 中删除 指定的数据
         self.keys.pop(del_index)
         removed_item = self.children.pop(del_index)
+        #平衡删除剩下的结点
         self.balance()
         return removed_item
 
     def balance(self):
+        #如果当前结点不是根结点，并且长度小于self.branching_factor // 2
         if not self.is_root() and self.size() < self.branching_factor // 2:
             # Borrow from siblings
+            #如果前结点非空，并且前面结点的结点数大于self.branching_factor // 2 则从self.previous中取出最后一个插入到当前结点
             if self.previous is not None and self.previous.size() > self.branching_factor // 2:
                 self.keys.insert(0, self.previous.keys.pop(-1))
                 self.children.insert(0, self.previous.children.pop(-1))
-                self.parent.change_key(self.keys[0], self.keys[0])
+                self.parent.check_key_after_delete()
+            #如果后结点非空，并且后面结点的结点数大于self.branching_factor // 2 则从self.next中取出最后一个插入到当前结点
             elif self.next is not None and self.next.size() > self.branching_factor // 2: 
                 self.keys.insert(-1, self.next.keys.pop(0))
                 self.children.insert(-1, self.next.children.pop(0))
-                self.next.parent.change_key(self.keys[0], self.next.keys[0])
-            # Merge. Always merge left.
+                self.next.parent.check_key_after_delete()
+            #如果前面的刚好大小小于或者等于self.branching_factor // 2 那么优先和前面的合并
             elif self.previous is not None:
                 del_key = self.previous.keys[-1]
                 self.previous.keys.extend(self.keys)
                 self.previous.children.extend(self.children)
                 self.parent.remove_child(del_key)
+            #如果前面的为空，后面的不为空则和后面的合并
             elif self.next is not None:
                 del_key = self.keys[-1]
                 self.keys.extend(self.next.keys)
@@ -106,18 +111,21 @@ class Node:
     def __init__(self, previous_node, next_node, keys, children, parent=None, branching_factor=16):
         self.previous = previous_node
         self.next = next_node
-        self.keys = keys # NOTE: must keep keys sorted
-        self.children = children # NOTE: children must correspond to parents.
+        self.keys = keys 
+        self.children = children 
         self.parent = parent
         self.branching_factor = branching_factor
+        #将所有的子结点的父亲结点设置为它
         for child in children:
             child.parent = self
 
     def set(self, key, value):
         for i, k in enumerate(self.keys):
+            #跟父亲结点一个个比较过去，如果找到比它小的结点就顺着找它对应的子结点里面查找
             if key < k:
                 self.children[i].set(key, value)
                 return
+        #如果都没找到则往右边的子结点查找
         self.children[i + 1].set(key, value)
 
 
@@ -139,16 +147,10 @@ class Node:
         if len(self.keys) == self.branching_factor:
             self.split(self.branching_factor // 2)
 
-
-    def change_key(self, old_key, new_key):
-        """Replaces the first key that is greater or equal than
-        old_key with new_key or modifies the parent's key so that new_key
-        falls within the current node"""
-        if new_key < self.keys[0]:
-            self.parent.change_key(self.keys[0], new_key)
-        for i, k in enumerate(self.keys):
-            if k >= old_key:
-                self.keys[i] = new_key
+    def check_key_after_delete(self):
+        for i,k in enumerate(self.keys):
+            if (self.keys[i] != self.children[i + 1].keys[0]):
+                self.keys[i] = self.children[i + 1].keys[0]
 
     def split(self, index):
 
@@ -171,8 +173,6 @@ class Node:
         return self.next
 
     def remove_item(self, key):
-        """Removes item corresponding to key in the tree.
-        """
         for i, k in enumerate(self.keys):
             if k >= key:
                 self.children[i].remove_item(key)
@@ -180,10 +180,6 @@ class Node:
         return self.children[-1].remove_item(key)
 
     def remove_child(self, key):
-        """Removes first key that is greater that or equal to
-        key and the child to the right of that key.
-        Returns the removed child.
-        """
         removed_child = None
         for i, k in enumerate(self.keys):
             if k >= key:
@@ -198,22 +194,25 @@ class Node:
         return removed_child
 
     def balance(self):
-        # Borrow from siblings if necessary
+        #如果当前结点不是根结点，并且长度小于self.branching_factor // 2
         if not self.is_root() and self.size() < self.branching_factor // 2:
+            #如果前结点非空，并且前面结点的结点数大于self.branching_factor // 2 则从self.previous中取出最后一个插入到当前结点
             if self.previous is not None and self.previous.size() > self.branching_factor // 2:
                 self.keys.insert(0, self.previous.keys.pop(-1))
                 self.children.insert(0, self.previous.children.pop(-1))
-                self.parent.change_key(self.keys[0], self.keys[0])
+                self.parent.check_key_after_delete()
+            #如果后结点非空，并且后面结点的结点数大于self.branching_factor // 2 则从self.next中取出最后一个插入到当前结点
             elif self.next is not None and self.next.size() > self.branching_factor // 2: 
                 self.keys.insert(-1, self.next.keys.pop(0))
                 self.children.insert(-1, self.next.children.pop(0))
-                self.next.parent.change_key(self.keys[0], self.next.keys[0])
-            # Merge. Always merge left.
+                self.next.parent.check_key_after_delete()
+            #如果前面的刚好大小小于或者等于self.branching_factor // 2 那么优先和前面的合并
             elif self.previous is not None:
                 del_key = self.previous.keys[-1]
                 self.previous.keys.extend(self.keys)
                 self.previous.children.extend(self.children)
                 self.parent.remove_child(del_key)
+            #如果前面的为空，后面的不为空则和后面的合并
             elif self.next is not None:
                 del_key = self.keys[-1]
                 self.keys.extend(self.next.keys)
@@ -243,29 +242,23 @@ class BPlusTree:
     def set(self, key, value):
         #将key value 添加到对应结点
         self.root.set(key, value)
+        #一旦原先结点的父亲结点非空，则表示上面又多出一层，则将多出的一层设为根结点
         if self.root.parent is not None:
             self.root = self.root.parent
 
     def get(self, key):
         return self.root.get(key)
 
-    def __getitem__(self, key):
-        return self.get(key)
-
     def remove_item(self, key):
+        #调用结点的删除函数
         self.root.remove_item(key)
-        if type(self.root) is Node and len(self.root.children) == 1:
+        #这时候表示删除到最后结点了
+        if self.root is Node and len(self.root.children) == 1:
             self.root = self.root.children[0]
-
-    def __delitem__(self, key):
-        return self.remove_item(key)
-
-
-    def __setitem__(self, key, value):
-        return self.set(key, value)
 
     def size(self):
         result = 0
+        #遍历全部的叶子结点计算它的大小进行累加
         leaf = self.leaves
         while leaf is not None:
             result += leaf.size()
@@ -311,5 +304,12 @@ class BPlusTree:
 if __name__ == "__main__":
     bp_tree = BPlusTree(16)
 
-    for item in range(0,18):
-        bp_tree.set(item,"value"+str(item))
+    for item in range(0,40):
+        bp_tree.set(item,"value"+str(random.randrange(0,100)))
+
+    bp_tree.remove_item(22)
+    bp_tree.remove_item(25)
+    bp_tree.remove_item(3)
+    bp_tree.remove_item(0)
+
+    print(bp_tree.size())
