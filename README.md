@@ -1122,6 +1122,10 @@ f(n)来表示“凑出n所需的最少钞票数量”
 * 并在搜索过程中用剪枝函数避免无效搜索。所谓的剪枝函数就是约束条件或目标函数的界，即判定该节点是否包含问题的解。如果肯定不包含，则跳过对以该节点为根的子树的搜索。  
   
 * [Introduction to Backtracking - Brute Force Approach](https://www.youtube.com/watch?v=DKCbsiDBN6c)
+* [回溯算法解题套路框架](https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban)
+* [回溯算法Github](https://github.com/selfboot/LeetCode/tree/master/Backtracking)
+* [回溯法](https://alleniverson.gitbooks.io/data-structure-and-algorithms/5.%E9%80%92%E5%BD%92/%E5%9B%9E%E6%BA%AF%E6%B3%95.html)
+* [回溯法套路模板 刷通leetcode](https://zhuanlan.zhihu.com/p/112926891)
 
 #### 3.6 分支定界法 Branch and bound
 
@@ -1130,6 +1134,9 @@ f(n)来表示“凑出n所需的最少钞票数量”
 分支定界类似于回溯法，也是在问题的解空间树T上搜索问题解的算法，它一般用于解决最小值优化算法，或者能够转化为最小值的最大值问题，它和回溯法不同的是：在遍历问题解空间树的时候，它采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索。它使用的是堆栈作为辅助遍历数据结构，而回溯法是基于深度优先遍历算法，使用队列作为辅助遍历数据结构。
 
 分支限界法的搜索策略是：在扩展结点处，先生成其所有子结点，然后再从当前的活结点表中选择下一个扩展对点。为了有效地选择下一扩展结点，以加速搜索的进程，在每一活结点处，计算一个限界值，并根据这些已计算出的函数值，从当前活结点表中选择一个最有利的结点作为扩展结点，使搜索朝着解空间树上有最优解的分支推进，以便尽快地找出一个最优解。分支限界法与回溯法对当前扩展结点所使用的扩展方式不同。在分支限界法中，每一个活结点只有一次机会成为扩展结点。活结点一旦成为扩展结点，就一次性产生其所有儿子结点。在这些儿子结点中，那些导致不可行解或导致非最优解的儿子结点被舍弃，其余儿子结点被子加入活结点表中。此后，从活结点表中取下一结点成为当前扩展结点，并重复上述结点扩展过程。这个过程一直持续到找到所求的解或活结点表为空时为止。
+
+
+* [算法笔记（回溯法，分支限界法）](http://www.jinrongtong5.com/article/13)
 
 #### 4. K最临近算法 KNN
 
@@ -1170,4 +1177,6 @@ http://zh.lucida.me/blog/on-learning-algorithms/
 * [http://www.cppblog.com/menjitianya/archive/2015/10/23/212084.html](http://www.cppblog.com/menjitianya/archive/2015/10/23/212084.html)
 * [https://algorithmtutor.com/#](https://algorithmtutor.com/#)
 * [https://www.cs.usfca.edu/~galles/visualization/RedBlack.html](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
-
+* [https://labuladong.gitbook.io/algo/](https://labuladong.gitbook.io/algo/)
+* [https://www.gitbook.com/book/alleniverson/data-structure-and-algorithms](https://www.gitbook.com/book/alleniverson/data-structure-and-algorithms)
+* [https://www.zhihu.com/question/266403334](https://www.zhihu.com/question/266403334)
