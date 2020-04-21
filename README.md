@@ -469,11 +469,11 @@ B树又称“B- 树”，又名平衡多路查找树
 
 ##### 3.2 图的表示:
 
-* 邻接矩阵 Adjacency Matrix
+* ****邻接矩阵 Adjacency Matrix****
 
 图的邻接矩阵用两个数组来表示图。一个一维的数组存储图中顶点信息，一个二维数组存储图中的边或弧的信息。它可以用来表示无向图，有向图，网。
 
-* 邻接表 Adjacency Table
+* ****邻接表 Adjacency Table****
 
 图的邻接用一个数组表示顶点，存放的是该顶点出发的所有相邻顶点。它可以用来表示无向图，有向图，网。
 
@@ -492,8 +492,33 @@ B树又称“B- 树”，又名平衡多路查找树
 ![](./image/datastruct/graphic/adjust_matrix_05.png)
 ![](./image/datastruct/graphic/adjust_matrix_06.png)
 
+* ****十字链表****
 
-* [十字链表](https://blog.csdn.net/u013009575/article/details/18978431?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)  -- 有向图  入度问题
+十字链表主要是为了便于求得图中顶点的度（出度和入度）而提出来的，它的结构如下：
+
+* 顶点结构：
+![](./image/datastruct/graphic/across_list_01.png)
+
+其中data表示顶点的具体数据信息，而firstIn则表示指向以该顶点为弧头的第一个弧节点。而firstOut则表示指向以该顶点为弧尾的第一个弧节点。为了表示有向图中所有的顶点，采用一个顶点数组存储每一个结点
+
+![](./image/datastruct/graphic/across_list_03.png)
+
+从上图可以看出，十字链表实质上就是为每个顶点建立两个链表，分别存储以该顶点为弧头的所有顶点和以该顶点为弧尾的所有顶点。
+
+* 边结构：
+![](./image/datastruct/graphic/across_list_02.png)
+
+十字链表中边结构的存储分为 5 部分内容，它们各自的作用如下：
+- tailvex是指弧起点在顶点的下标，
+- headvex是指弧终点在顶点表中的下标，
+- hlink是指入边表指针域，指向终点相同的一下条边
+- tlink是指出边表指针域，指向起点相同的下一条边。
+- info 用于存储与该顶点相关的信息，例如量顶点之间的权值
+
+![](./image/datastruct/graphic/across_list_04.png)
+
+与邻接表,邻接矩阵不同的是，十字链表法仅适用于存储有向图和有向网
+
 * [邻接多重表](https://blog.csdn.net/weixin_42034217/article/details/84588562?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task) -- 无向图 关注边的时候
 * 边集数组 
 
