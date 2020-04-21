@@ -459,6 +459,7 @@ B树又称“B- 树”，又名平衡多路查找树
 * 无向完全图：任意两个顶点之间都存在边的图。n个顶点就有(n * (n-1)) * 0.5 条边
 * 有向完全图：在有向图中，如果任意两个顶点之间都存在方向互为相反的两条边，则这个图为有向完全图。n个顶点就有(n * (n-1)) 条边
 * 权: 与图的边相关的数值叫做权重
+* 网: 带权重的图
 * 顶点的度：无向图顶点的边数，叫做顶点的度。有向图的度又分为出度和入度。
 * 连通图：在无向图中，如果从顶点v到顶点v1有路径，则v和v1是连通的，如果对于图中任意两个顶点，都是连通的，则称这个图是连通图。
 * 连通分量：无向图中的极大连通图。连通分量必须是原图的子图，并且子图要是连通的，并且包含极大顶点数。
@@ -468,8 +469,30 @@ B树又称“B- 树”，又名平衡多路查找树
 
 ##### 3.2 图的表示:
 
-* 邻接矩阵 -- 表示无向图，有向图，网
-* 邻接表   -- 表示无向图，有向图，网
+* 邻接矩阵 Adjacency Matrix
+
+图的邻接矩阵用两个数组来表示图。一个一维的数组存储图中顶点信息，一个二维数组存储图中的边或弧的信息。它可以用来表示无向图，有向图，网。
+
+* 邻接表 Adjacency Table
+
+图的邻接用一个数组表示顶点，存放的是该顶点出发的所有相邻顶点。它可以用来表示无向图，有向图，网。
+
+下面分别是一个图的无向图和有向图：
+
+![](./image/datastruct/graphic/adjust_matrix_01.png)
+![](./image/datastruct/graphic/adjust_matrix_02.png)
+
+下面是它的邻接矩阵表示法
+
+![](./image/datastruct/graphic/adjust_matrix_03.png)
+![](./image/datastruct/graphic/adjust_matrix_04.png)
+
+下面是它的邻接表表示法
+
+![](./image/datastruct/graphic/adjust_matrix_05.png)
+![](./image/datastruct/graphic/adjust_matrix_06.png)
+
+
 * [十字链表](https://blog.csdn.net/u013009575/article/details/18978431?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)  -- 有向图  入度问题
 * [邻接多重表](https://blog.csdn.net/weixin_42034217/article/details/84588562?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task) -- 无向图 关注边的时候
 * 边集数组 
@@ -1168,9 +1191,8 @@ KNN 最关键的部分在于两点：特征的抽取以及相似度的计算。
 * [https://www.youtube.com/user/mikeysambol](https://www.youtube.com/user/mikeysambol)
 * [[Data Structure & Algorithm] 七大查找算法](https://www.cnblogs.com/maybe2030/p/4715035.html)
 * [[Data Structure & Algorithm] 八大排序算法](https://www.cnblogs.com/maybe2030/p/4715042.html)
-
 * [GitHub标星15K，这个开源项目让算法动起来](https://www.tinymind.cn/articles/4179)
-http://zh.lucida.me/blog/on-learning-algorithms/
+* [http://zh.lucida.me/blog/on-learning-algorithms/](http://zh.lucida.me/blog/on-learning-algorithms/)
 * [Sound of sorting](http://panthema.net/2013/sound-of-sorting/)
 * [Sound of sorting Youtu](https://www.youtube.com/watch?v=kPRA0W1kECg&t=15s)
 * [Sorting Algorithms](https://www.toptal.com/developers/sorting-algorithms)
