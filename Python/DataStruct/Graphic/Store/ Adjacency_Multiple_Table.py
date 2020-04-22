@@ -142,7 +142,7 @@ if __name__ == '__main__':
     multiple_table.add_edge(1,4,"B->E")
     multiple_table.add_edge(2,4,"C->E")
     multiple_table.add_edge(2,3,"C->E")
-GIT
+    
     
     
 
