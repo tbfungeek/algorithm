@@ -519,7 +519,38 @@ B树又称“B- 树”，又名平衡多路查找树
 
 与邻接表,邻接矩阵不同的是，十字链表法仅适用于存储有向图和有向网
 
-* [邻接多重表](https://blog.csdn.net/weixin_42034217/article/details/84588562?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task) -- 无向图 关注边的时候
+* [邻接多重表](https://blog.csdn.net/weixin_42034217/article/details/84588562?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task) 
+
+邻接表在用于无向图访问或者删除一条边的情景下需要同时访问两个链表i和j并分别找到对应的边结点，这给针对图的边的操作（标记或删除）带来不便利。邻接多重表的设计就是为了克服这种不便。
+
+* 邻接多重表的结点结构：
+
+![](./image/datastruct/graphic/node_01.png)
+
+data用来记录顶点的信息，firstEdge用来表示依附于该顶点的第一条边。整个图的结点会使用一个数组来存储，结点集如下图所示。
+
+![](./image/datastruct/graphic/node_02.png)
+
+* 邻接多重表的边结点结构：
+
+![](./image/datastruct/graphic/edge_03.png)
+
+其中mark表示标志位，用于标记该边是否已经被访问过；iVex和jVex表示该边的两个顶点在结点数组中的位置；iLink和jLink分别表示指向依附于顶点iVex和jVex下一条边的指针。
+
+下面是一个无向图例子：
+![](./image/datastruct/graphic/example_01.png)
+
+它的邻接表表示如下：
+![](./image/datastruct/graphic/example02.png)
+它的邻接多重表表示如下：
+![](./image/datastruct/graphic/example03.png)
+
+
+
+
+
+
+
 * 边集数组 
 
 ##### 3.3 图的遍历：
