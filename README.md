@@ -558,7 +558,17 @@ data用来记录顶点的信息，firstEdge用来表示依附于该顶点的第�
 ##### 3.3 图的遍历：
 
 * ****[无向图深度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
+  
+![](./image/datastruct/graphic/dfs01.png)
+![](./image/datastruct/graphic/dfs02.png)
+![](./image/datastruct/graphic/dfs03.png)
+![](./image/datastruct/graphic/dfs04.png)
+
 * ****[无向图广度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
+  
+![](./image/datastruct/graphic/bfs01.png)
+![](./image/datastruct/graphic/bfs02.png)
+
 * ****[有向图深度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
 * ****[有向图广度优先遍历](https://xiaozhuanlan.com/topic/8623547109)****
 
