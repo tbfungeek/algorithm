@@ -55,7 +55,8 @@ class Adjacency_Table_Graphic(object):
     def __init__(self):
         #key 对应的值  value 结点
         self.vexs = {}
-        self.edge_num = 0
+        #key (start end)  value  (weight)
+        self.edges = []
     
     """
     结点数
@@ -67,7 +68,7 @@ class Adjacency_Table_Graphic(object):
     边数
     """
     def edge_num(self):
-        return self.edge_num
+        return len(self.edges)
 
     """
     添加结点
@@ -88,7 +89,9 @@ class Adjacency_Table_Graphic(object):
         if start_vex.is_connected_vex(end):
             return
         start_vex.connect_to(end_vex,weight)
-        self.edge_num += 1
+        if start > end:
+            start,end = end,start
+        self.edges.append([start,end,weight]);
 
     """
     通过值来获取结点
@@ -96,12 +99,59 @@ class Adjacency_Table_Graphic(object):
     def vex_by_value(self,value):
         return self.vexs[value]
 
-
-    def prim(self, start_point):
-
+    def kruskal(self):
         path = []
 
-        if len(self.vexs.keys()) <= 0 or self.edge_num < self.vex_num() - 1:
+        if len(self.vexs.keys()) <= 0 or self.edge_num() < self.vex_num() - 1:
+            return path
+        
+        #对边缘进行排序
+        edge_list = self.edges[:]
+        edge_list.sort(key=lambda a:a[2])
+        
+        #将结点拷贝出来
+        vexs = list(self.vexs.keys())
+        #将每个结点形成一个树
+        trees = [[vex] for vex in vexs]
+
+        #遍历每条边，判断边的顶点横跨了哪两个子树，如果
+        for edge in edge_list:
+            start_point_in_tree_index = 0
+            end_point_in_tree_index = 0
+            for i in range(len(trees)):
+                if len(trees[i]) == 0:
+                    continue
+                #标记当前边的起点和终点所在的子树序号
+                if edge[0] in trees[i]:
+                    start_point_in_tree_index = i
+                if edge[1] in trees[i]:
+                    end_point_in_tree_index = i
+
+            #如果不在一个子树上将两个不同的子树合并在一起，最终合并到只剩下一颗为止
+            if start_point_in_tree_index != end_point_in_tree_index:
+                trees[start_point_in_tree_index] = trees[start_point_in_tree_index] + trees[end_point_in_tree_index]
+                del trees[end_point_in_tree_index]
+                #只添加开始和结束两个结点在不同子树上的边，如果在同一个子树说明已经有连通路径了
+                path.append(edge)
+
+        return path
+
+        group = [[i] for i in range(self.nodenum)]
+        for edge in edge_list:
+            for i in range(len(group)):
+                if edge[0] in group[i]:
+                    m = i
+                if edge[1] in group[i]:
+                    n = i
+            if m != n:
+                path.append(edge)
+                group[m] = group[m] + group[n]
+                group[n] = []
+        return path
+
+    def prim(self, start_point):
+        path = []
+        if len(self.vexs.keys()) <= 0 or self.edge_num() < self.vex_num() - 1:
             return path
 
         start_vex = self.vex_by_value(start_point)
@@ -170,3 +220,7 @@ if __name__ == "__main__":
     g.add_edge(5,4,4)
 
     print(g.prim(0))
+
+    print(g.kruskal())
+
+    print("")
