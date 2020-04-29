@@ -624,7 +624,13 @@ Dijkstra 是基于贪婪算法策略的，它可以用于解决无向图最短�
 ![](./image/datastruct/graphic/example2.png)
 
 * ****Floyd****
+
+[Floyd 视频](https://www.youtube.com/watch?v=oNI0rf2P9gE)
+
 * ****Bellman-Ford****
+  
+Dijkstra 是基于动态规划算法策略的，它的问题在于遇到总负数权重循环子图的时候会得到错误的答案。
+[Bellman-Ford 视频](https://www.youtube.com/watch?v=FtN3BYH2Zes)
 
 * [图论最短距离(Shortest Path)算法动画演示-Dijkstra(迪杰斯特拉)和Floyd(弗洛伊德)](https://www.bilibili.com/video/av54668527)
 * [几个最短路径算法Floyd、Dijkstra、Bellman-Ford、SPFA的比较](https://blog.csdn.net/v_JULY_v/article/details/6181485)
