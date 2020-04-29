@@ -616,20 +616,20 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 
 * ****Dijkstra****
 
-Dijkstra 是基于贪婪算法策略的，它可以用于解决无向图最短路径问题，但是在遇到负边的时候可能会给出错误答案。
+  Dijkstra 是基于贪婪算法策略的，它可以用于解决无向图最短路径问题，但是在遇到负边的时候可能会给出错误答案。
 
-[Dijkstra 视频](https://www.youtube.com/watch?v=XB4MIexjvY0)
+  [Dijkstra 视频](https://www.youtube.com/watch?v=XB4MIexjvY0)
 
-![](./image/datastruct/graphic/example.png)
-![](./image/datastruct/graphic/example2.png)
+  ![](./image/datastruct/graphic/example.png)
+  ![](./image/datastruct/graphic/example2.png)
 
 * ****Floyd****
 
-[Floyd 视频](https://www.youtube.com/watch?v=oNI0rf2P9gE)
+  [Floyd 视频](https://www.youtube.com/watch?v=oNI0rf2P9gE)
 
 * ****Bellman-Ford****
   
-Dijkstra 是基于动态规划算法策略的，它的问题在于遇到总负数权重循环子图的时候会得到错误的答案。
+ Bellman-Ford 是基于动态规划算法策略的，它的问题在于遇到总负数权重循环子图的时候会得到错误的答案。
 [Bellman-Ford 视频](https://www.youtube.com/watch?v=FtN3BYH2Zes)
 
 * [图论最短距离(Shortest Path)算法动画演示-Dijkstra(迪杰斯特拉)和Floyd(弗洛伊德)](https://www.bilibili.com/video/av54668527)
