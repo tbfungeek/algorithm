@@ -615,6 +615,14 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 * [最小生成树算法动画演示](https://www.bilibili.com/video/av47042691/)
 
 * ****Dijkstra****
+
+Dijkstra 是基于贪婪算法策略的，它可以用于解决无向图最短路径问题，但是在遇到负边的时候可能会给出错误答案。
+
+[Dijkstra 视频](https://www.youtube.com/watch?v=XB4MIexjvY0)
+
+![](./image/datastruct/graphic/example.png)
+![](./image/datastruct/graphic/example2.png)
+
 * ****Floyd****
 * ****Bellman-Ford****
 
