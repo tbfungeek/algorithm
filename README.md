@@ -618,6 +618,11 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 
   Dijkstra 是基于贪婪算法策略的，它可以用于解决无向图最短路径问题，但是在遇到负边的时候可能会给出错误答案。
 
+  https://www.bogotobogo.com/python/python_Dijkstras_Shortest_Path_Algorithm.php
+  https://www.geeksforgeeks.org/python-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
+  https://gist.github.com/kachayev/5990802
+  https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc
+
   [Dijkstra 视频](https://www.youtube.com/watch?v=XB4MIexjvY0)
 
   ![](./image/datastruct/graphic/example.png)
@@ -626,6 +631,10 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 * ****Floyd****
 
   [Floyd 视频](https://www.youtube.com/watch?v=oNI0rf2P9gE)
+
+  https://github.com/smbanaie/floyd-warshall-python/blob/master/Main.py
+  https://leetcode.com/problems/network-delay-time/discuss/283711/python-bellman-ford-spfa-dijkstra-floyd-clean-and-easy-to-understand
+  https://github.com/Morreski/Floyd_Warshall/blob/master/pyfloyd/floyd_warshall.py
 
 * ****Bellman-Ford****
   
