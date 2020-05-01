@@ -616,17 +616,19 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 
 * ****Dijkstra****
 
-  Dijkstra 是基于贪婪算法策略的，它可以用于解决无向图最短路径问题，但是在遇到负边的时候可能会给出错误答案。
-
-  https://www.bogotobogo.com/python/python_Dijkstras_Shortest_Path_Algorithm.php
-  https://www.geeksforgeeks.org/python-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
-  https://gist.github.com/kachayev/5990802
-  https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc
+  Dijkstra 是基于贪婪算法策略的解决单源最短路径的算法，它可以用于解决无向图最短路径问题，但是在遇到负边的时候可能会给出错误答案。
 
   [Dijkstra 视频](https://www.youtube.com/watch?v=XB4MIexjvY0)
 
   ![](./image/datastruct/graphic/example.png)
   ![](./image/datastruct/graphic/example2.png)
+
+  - 较好的文章推荐
+  - [https://www.bogotobogo.com/python/python_Dijkstras_Shortest_Path_Algorithm.php](https://www.bogotobogo.com/python/python_Dijkstras_Shortest_Path_Algorithm.php)()
+  - [https://www.geeksforgeeks.org/python-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/](https://www.geeksforgeeks.org/python-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/)
+  - [https://gist.github.com/kachayev/5990802](https://gist.github.com/kachayev/5990802)
+  - [https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc](https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc)
+
 
 * ****Floyd****
 
