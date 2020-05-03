@@ -613,6 +613,7 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 
 * [视频教程](https://www.youtube.com/watch?v=ypE6a1Kk-6Q)
 * [最小生成树算法动画演示](https://www.bilibili.com/video/av47042691/)
+* [几个最短路径算法Floyd、Dijkstra、Bellman-Ford、SPFA的比较](https://blog.csdn.net/v_JULY_v/article/details/6181485)
 
 * ****Dijkstra****
 
@@ -631,12 +632,14 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 
 
 * ****Floyd****
+ Floyd算法适合于有向图和无向图，它不适合于包含总权重为负数的循环子图的情况，它是基于动态规划算法来确定最短路径问题。
 
   [Floyd 视频](https://www.youtube.com/watch?v=oNI0rf2P9gE)
 
-  https://github.com/smbanaie/floyd-warshall-python/blob/master/Main.py
-  https://leetcode.com/problems/network-delay-time/discuss/283711/python-bellman-ford-spfa-dijkstra-floyd-clean-and-easy-to-understand
-  https://github.com/Morreski/Floyd_Warshall/blob/master/pyfloyd/floyd_warshall.py
+  * [https://brilliant.org/wiki/floyd-warshall-algorithm/](https://brilliant.org/wiki/floyd-warshall-algorithm/)
+  * [https://www.programiz.com/dsa/floyd-warshall-algorithm](https://www.programiz.com/dsa/floyd-warshall-algorithm)
+  * [洛伊德算法完备算法详解](https://www.bilibili.com/video/av74605839?from=search&seid=13216477747890716269)
+  * [弗洛伊德算法介绍](https://lrh1993.gitbooks.io/android_interview_guide/content/data-structure/graph/Floyd.html)
 
 * ****Bellman-Ford****
   
@@ -644,9 +647,6 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 [Bellman-Ford 视频](https://www.youtube.com/watch?v=FtN3BYH2Zes)
 
 * [图论最短距离(Shortest Path)算法动画演示-Dijkstra(迪杰斯特拉)和Floyd(弗洛伊德)](https://www.bilibili.com/video/av54668527)
-* [几个最短路径算法Floyd、Dijkstra、Bellman-Ford、SPFA的比较](https://blog.csdn.net/v_JULY_v/article/details/6181485)
-* [洛伊德算法完备算法详解](https://www.bilibili.com/video/av74605839?from=search&seid=13216477747890716269)
-* [弗洛伊德算法介绍](https://lrh1993.gitbooks.io/android_interview_guide/content/data-structure/graph/Floyd.html)
 
 ### 二. 算法
 
