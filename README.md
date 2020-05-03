@@ -168,6 +168,13 @@
 
 ![](https://raw.githubusercontent.com/duiying/img/master/%E5%A4%A7%E6%A0%B9%E5%A0%86%E5%92%8C%E5%B0%8F%E6%A0%B9%E5%A0%86.jpg)
 
+* ****并查集 Union-Find：****
+
+- [https://www.jianshu.com/p/72da76a34db1](https://www.jianshu.com/p/72da76a34db1)
+- [并查集入门及例题分析](https://juejin.im/post/5cfb87e351882529c549ad51)
+- [客户端用不着的数据结构之并查集](https://www.cxyxiaowu.com/361.html)
+  
+
 * ****平衡二叉树(AVL)：****
 * 
 ![](http://data.biancheng.net/uploads/allimg/171024/2-1G02409242TY.png)
