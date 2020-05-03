@@ -614,6 +614,7 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 * [视频教程](https://www.youtube.com/watch?v=ypE6a1Kk-6Q)
 * [最小生成树算法动画演示](https://www.bilibili.com/video/av47042691/)
 * [几个最短路径算法Floyd、Dijkstra、Bellman-Ford、SPFA的比较](https://blog.csdn.net/v_JULY_v/article/details/6181485)
+* [图论最短距离(Shortest Path)算法动画演示-Dijkstra(迪杰斯特拉)和Floyd(弗洛伊德)](https://www.bilibili.com/video/av54668527)
 
 * ****Dijkstra****
 
@@ -644,9 +645,8 @@ Kruskal算法本质是贪心算法，而Prime算法是动态规划
 * ****Bellman-Ford****
   
  Bellman-Ford 是基于动态规划算法策略的，它的问题在于遇到总负数权重循环子图的时候会得到错误的答案。
-[Bellman-Ford 视频](https://www.youtube.com/watch?v=FtN3BYH2Zes)
-
-* [图论最短距离(Shortest Path)算法动画演示-Dijkstra(迪杰斯特拉)和Floyd(弗洛伊德)](https://www.bilibili.com/video/av54668527)
+ * [Bellman-Ford 视频](https://www.youtube.com/watch?v=FtN3BYH2Zes)
+ * [Bellman–Ford Algorithm | DP-23](https://www.geeksforgeeks.org/bellman-ford-algorithm-dp-23/)
 
 ### 二. 算法
 
