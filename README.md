@@ -192,7 +192,7 @@
 ![](./image/datastruct/tree/0002.png)
 
 * ****平衡二叉树(AVL)：****
-* 
+  
 ![](http://data.biancheng.net/uploads/allimg/171024/2-1G02409242TY.png)
 
 为什么需要引入平衡二叉树，是因为按照普通二叉树的构建方式，有可能会导致极端左倾斜，或者极端右倾斜的二叉树。这种二叉树的性能很低。
